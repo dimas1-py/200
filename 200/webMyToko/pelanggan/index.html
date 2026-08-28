@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyToko - Toko Online Sederhana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-100 text-gray-800 font-sans antialiased flex flex-col min-h-screen"
+  >
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="text-2xl font-bold text-green-600">MyToko</a>
+      <nav>
+        <ul class="flex items-center gap-6 font-medium text-gray-700">
+          <li><a href="#" class="hover:text-green-600 transition">Home</a></li>
+          <li><a href="#produk" class="hover:text-green-600 transition">Produk</a></li>
+          <li><a href="#Kontak" class="hover:text-green-600 transition">Kontak</a></li>
+          
+          <li>
+            <input id="kolomPencarian" type="text" placeholder="Cari produk..." class="px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 w-48 lg:w-64">
+          </li>
+
+          <li>
+            <button id="tombolBukaCart" class="relative p-2 hover:bg-gray-100 rounded-lg transition text-xl" title="Keranjang">
+              🛒
+              <span id="badgeCart" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 items-center justify-center rounded-full hidden">0</span>
+            </button>
+          </li>
+
+          <li>
+            <div id="profilAkun" class="hidden items-center gap-2 text-right">
+              <div>
+                <p id="namaProfil" class="text-sm font-semibold text-gray-800"></p>
+                <p id="emailProfil" class="text-xs text-gray-500"></p>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">P</div>
+            </div>
+          </li>
+
+          <li>
+            <a id="tombolBukaLogin" href="login.html" class="bg-green-600 text-white px-5 py-1.5 rounded-lg hover:bg-green-700 transition shadow-sm font-semibold">
+              Login
+            </a>
+          </li>
+
+          <li>
+            <button id="tombolLogout" class="hidden bg-red-500 text-white px-5 py-1.5 rounded-lg hover:bg-red-600 transition shadow-sm font-semibold">
+              Logout
+            </button>
+          </li>
+        </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="grow">
+      <section class="bg-green-600 text-white py-16 px-4 text-center">
+        <h1 class="text-3xl font-bold">MyToko</h1>
+        <p
+          class="text-green-100 text-base md:text-lg max-w-2xl mx-auto text-center leading-relaxed mt-2 mb-6"
+        >
+          Anda bisa mendapatkan segalanya di sini dengan harga yang wajar. Kami
+          menyediakan produk dan layanan berkualitas tinggi bagi pelanggan kami.
+          Jelajahi beragam produk kami dan temukan apa yang Anda butuhkan.
+        </p>
+        <a
+          href="#produk"
+          class="inline-block bg-white text-green-600 font-semibold px-6 py-2.5 rounded-lg shadow hover:bg-green-50 transition"
+        >
+          Lihat Produk
+        </a>
+      </section>
+
+      <!-- PROMO SECTION -->
+      <section class="from-yellow-400 via-orange-400 to-red-400 py-10 px-4">
+        <div class="container mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-extrabold text-white drop-shadow-md mb-3">
+            🔥 Promo Spesial 9.9! 🔥
+          </h2>
+          <p class="text-white text-lg font-semibold mb-6">
+            Diskon hingga <span class="bg-white text-orange-600 px-3 py-1 rounded-full">50%</span> untuk semua produk! Jangan lewatkan!
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="bg-white/90 backdrop-blur rounded-xl p-4 shadow-lg w-40">
+              <p class="text-3xl font-bold text-orange-600">50%</p>
+              <p class="text-sm font-semibold text-gray-700">Mobil</p>
+            </div>
+            <div class="bg-white/90 backdrop-blur rounded-xl p-4 shadow-lg w-40">
+              <p class="text-3xl font-bold text-orange-600">30%</p>
+              <p class="text-sm font-semibold text-gray-700">Minuman</p>
+            </div>
+            <div class="bg-white/90 backdrop-blur rounded-xl p-4 shadow-lg w-40">
+              <p class="text-3xl font-bold text-orange-600">20%</p>
+              <p class="text-sm font-semibold text-gray-700">Makanan</p>
+            </div>
+            <div class="bg-white/90 backdrop-blur rounded-xl p-4 shadow-lg w-40">
+              <p class="text-3xl font-bold text-orange-600">40%</p>
+              <p class="text-sm font-semibold text-gray-700">Tactical Gear</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="produk" class="container mx-auto py-12 px-4">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Produk Kami</h2>
+        <p id="pesanKosong" class="text-gray-500 text-center py-8 hidden">Tidak ada produk yang ditemukan.</p>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
+          <article
+            data-stock="3"
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="https://www.jdmexport.com/wp-content/uploads/sites/9/2022/12/08095258/toyota-ae86.jpg"
+              alt=""
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4 flex flex-col grow">
+              <span class="text-xs text-red-600 font-semibold uppercase"
+                >Mobil</span
+              >
+              <h3 class="font-bold text-gray-800 text-lg mt-1">
+                Toyota AE86 Sprinter Trueno
+              </h3>
+              <!-- RATING -->
+              <div class="flex items-center gap-1 text-yellow-400 text-sm my-1">
+                <span>★★★★★</span>
+                <span class="text-gray-400 text-xs ml-1">(5.0)</span>
+              </div>
+              <p class="text-gray-600 text-sm my-2 grow">
+                Mobil yang sangat ikonik di dunia JDM, mobil sport kompak ringan
+                ber- lampu pop-up, mesin depan, dan penggerak roda belakang yang
+                diproduksi tahun 1983 sampai 1987. Mobil legendaris ini terkenal
+                lewat budaya drifting dan serial anime [Initial D].
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <div>
+                  <span class="block text-xs text-gray-400 line-through">Rp 1.596.244.000</span>
+                  <span class="text-green-600 font-bold text-lg" data-original-price="1596244000">Rp 798.122.000</span>
+                  <span class="inline-block mt-1 px-2 py-1 text-[10px] font-bold text-white bg-red-500 rounded-full">50% OFF</span>
+                </div>
+                <button
+                  class="btnBeli bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article data-stock="25" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+            <img
+              src="https://www.idh.id/thumbs/nb2hi4dthixs63lbnzqwozlsfzuwi2bonfsc65lqnrxwczdtf5sgs43uojuwe5lun5zc6nbsgeztgmbygu4c64dsn5shky3uf4ytgmzsgyztinjqgextknlrnbnhi5dtnj4gg6dqkbxeiltkobtq-/nb2hi4dthixs63lbnzqwozlsfzuwi2bonfsc65lqnrxwczdtf5sgs43uojuwe5lun5zc6nbsgeztgmbygu4c64dsn5shky3uf4ytgmzsgyztinjqgextknlrnbnhi5dtnj4gg6dqkbxeiltkobtt65z5gyydajtihu3dama-.jpg"
+              alt="Ultra Milk Caramel 200ml"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4 flex flex-col grow">
+              <span class="text-xs text-blue-600 font-semibold uppercase"
+                >Minuman</span
+              >
+              <h3 class="font-bold text-gray-800 text-lg mt-1">
+                Ultra Milk Caramel 200ml
+              </h3>
+              <div class="flex items-center gap-1 text-yellow-400 text-sm my-1">
+                <span>★★★★☆</span>
+                <span class="text-gray-400 text-xs ml-1">(4.0)</span>
+              </div>
+              <p class="text-gray-600 text-sm my-2 grow">
+                Minuman susu UHT rasa caramel yang manis, cocok diminum
+                kapanpun.
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <div>
+                  <span class="block text-xs text-gray-400 line-through">Rp 8.000</span>
+                  <span class="text-green-600 font-bold text-lg" data-original-price="8000">Rp 5.600</span>
+                  <span class="inline-block mt-1 px-2 py-1 text-[10px] font-bold text-white bg-red-500 rounded-full">30% OFF</span>
+                </div>
+                <button
+                  class="btnBeli bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            data-stock="0"
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJp3QsqeBrUSubG8JAyvxuB8Xx_nyNMx5tHPNZTmWx4w&s"
+              alt="Nescafe Black Ice"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4 flex flex-col grow">
+              <span class="text-xs text-blue-600 font-semibold uppercase"
+                >Minuman Kaleng</span
+              >
+              <h3 class="font-bold text-gray-800 text-lg mt-1">
+                Nescafe Black Ice
+              </h3>
+              <!-- RATING -->
+              <div class="flex items-center gap-1 text-yellow-400 text-sm my-1">
+                <span>★★★★☆</span>
+                <span class="text-gray-400 text-xs ml-1">(4.2)</span>
+              </div>
+              <p class="text-gray-600 text-sm my-2 grow">
+                Kopi hitam yang dingin, cocok diminum kapan saja. Recovers your
+                stamina
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <div>
+                  <span class="block text-xs text-gray-400 line-through">Rp 7.000</span>
+                  <span class="text-green-600 font-bold text-lg" data-original-price="7000">Rp 4.900</span>
+                  <span class="inline-block mt-1 px-2 py-1 text-[10px] font-bold text-white bg-red-500 rounded-full">30% OFF</span>
+                </div>
+                <button
+                  class="btnBeli bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            data-stock="12"
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="https://buckets.sasa.co.id/v1/AUTH_Assets/Assets/p/website/medias/page_medias/nasi_kebuli.jpg"
+              alt="Nasi Kebuli Ayam"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4 flex flex-col grow">
+              <span class="text-xs text-indigo-600 font-semibold uppercase"
+                >Makanan</span
+              >
+              <h3 class="font-bold text-gray-800 text-lg mt-1">
+                Nasi Kebuli Ayam
+              </h3>
+              <!-- RATING -->
+              <div class="flex items-center gap-1 text-yellow-400 text-sm my-1">
+                <span>★★★★★</span>
+                <span class="text-gray-400 text-xs ml-1">(4.8)</span>
+              </div>
+              <p class="text-gray-600 text-sm my-2 grow">
+                Nasi kebuli dengan daging ayam yang lezat dan gurih. duh enak
+                banget.
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <div>
+                  <span class="block text-xs text-gray-400 line-through">Rp 35.000</span>
+                  <span class="text-green-600 font-bold text-lg" data-original-price="35000">Rp 28.000</span>
+                  <span class="inline-block mt-1 px-2 py-1 text-[10px] font-bold text-white bg-red-500 rounded-full">20% OFF</span>
+                </div>
+                <button
+                  class="btnBeli bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            data-stock="1"
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="https://awsimages.detik.net.id/community/media/visual/2022/08/27/antimateri_169.jpeg?w=1200"
+              alt="Antimateri"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4 flex flex-col grow">
+              <span class="text-xs text-red-600 font-semibold uppercase"
+                >Micellaneous Items</span
+              >
+              <h3 class="font-bold text-gray-800 text-lg mt-1">Antimateri</h3>
+              <!-- RATING -->
+              <div class="flex items-center gap-1 text-yellow-400 text-sm my-1">
+                <span>★★★☆☆</span>
+                <span class="text-gray-400 text-xs ml-1">(3.5)</span>
+              </div>
+              <p class="text-gray-600 text-sm my-2 grow">
+                Contaminated in Magnetic Containment Unit, barang ini merupakan
+                barang terlangka dan tersusah untuk di ciptakan, dan karena
+                kelangkaan tersebut harga barang ini sangat fantastis
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-green-600 font-bold text-lg"
+                  >Rp 105.791.000</span
+                >
+                <button
+                  class="btnBeli bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            data-stock="1"
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw-iFcLqC1HBop60KE1IgakRxEdvFDP5KnTLizlFDtBw&s=10"
+              alt="Heart Of Africa"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4 flex flex-col grow">
+              <span class="text-xs text-red-600 font-semibold uppercase"
+                >Miscellaneous Items</span
+              >
+              <h3 class="font-bold text-gray-800 text-lg mt-1">
+                Heart of Africa
+              </h3>
+              <!-- RATING -->
+              <div class="flex items-center gap-1 text-yellow-400 text-sm my-1">
+                <span>★★★★★</span>
+                <span class="text-gray-400 text-xs ml-1">(5.0)</span>
+              </div>
+              <p class="text-gray-600 text-sm my-2 grow">
+                Berlian langka berukuran sangat besar dengan nilai estetika dan
+                harga pasar fantastis.
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-green-600 font-bold text-lg"
+                  >Rp 596.244.000</span
+                >
+                <button
+                  class="btnBeli bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            data-stock="1"
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtJoTzC5Rmego5eyGxjD5-Jc5sIfbF8lUEuEOPxnLW_A&s=10"
+              alt="Gold Lion Statue"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4 flex flex-col grow">
+              <span class="text-xs text-red-600 font-semibold uppercase"
+                >Miscellaneous Items</span
+              >
+              <h3 class="font-bold text-gray-800 text-lg mt-1">
+                Gold Lion Statue
+              </h3>
+              <!-- RATING -->
+              <div class="flex items-center gap-1 text-yellow-400 text-sm my-1">
+                <span>★★★★☆</span>
+                <span class="text-gray-400 text-xs ml-1">(4.5)</span>
+              </div>
+              <p class="text-gray-600 text-sm my-2 grow">
+                Patung emas yang indah dan bernilai tinggi.
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-green-600 font-bold text-lg"
+                  >Rp 596.244.000</span
+                >
+                <button
+                  class="btnBeli bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            data-stock="1"
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="https://image.made-in-china.com/365f3j00yZSkOrPCkQoh/Setelan-Perlindungan-Penuh-Tim-Penjinak-Bom-Eod.webp"
+              alt="HVK-2 Vest"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4 flex flex-col grow">
+              <span class="text-xs text-indigo-600 font-semibold uppercase"
+                >Tactical Gear</span
+              >
+              <h3 class="font-bold text-gray-800 text-lg mt-1">EOD Gear Set</h3>
+              <!-- RATING -->
+              <div class="flex items-center gap-1 text-yellow-400 text-sm my-1">
+                <span>★★★★☆</span>
+                <span class="text-gray-400 text-xs ml-1">(4.3)</span>
+              </div>
+              <p class="text-gray-600 text-sm my-2 grow">
+                perlindungan maksimal untuk peluru berkaliber besar, ledakan,
+                dan benturan.
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <div>
+                  <span class="block text-xs text-gray-400 line-through">Rp 238.000.000</span>
+                  <span class="text-green-600 font-bold text-lg" data-original-price="238000000">Rp 142.800.000</span>
+                  <span class="inline-block mt-1 px-2 py-1 text-[10px] font-bold text-white bg-red-500 rounded-full">40% OFF</span>
+                </div>
+                <button
+                  class="btnBeli bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- TESTIMONI PELANGGAN -->
+      <section class="bg-white py-12 px-4">
+        <div class="container mx-auto">
+          <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">⭐ Testimoni Pelanggan</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+              <div class="flex items-center gap-1 text-yellow-400 text-lg mb-2">★★★★★</div>
+              <p class="text-gray-700 italic">"Barang berkualitas, pengiriman cepat! Mobil AE86-nya ori banget. Recommended!"</p>
+              <p class="text-gray-500 font-semibold mt-3">— Andi Pratama</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+              <div class="flex items-center gap-1 text-yellow-400 text-lg mb-2">★★★★☆</div>
+              <p class="text-gray-700 italic">"Ultra Milk-nya enak, harga terjangkau. Cuma pengiriman agak lama."</p>
+              <p class="text-gray-500 font-semibold mt-3">— Siti Rahmah</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6 shadow-md">
+              <div class="flex items-center gap-1 text-yellow-400 text-lg mb-2">★★★★★</div>
+              <p class="text-gray-700 italic">"EOD Gear Set-nya bikin saya merasa aman. Kualitas top! Makasih MyToko."</p>
+              <p class="text-gray-500 font-semibold mt-3">— Bima Sakti</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <section class="bg-gray-200 justify-end py-7 px-4">
+      <h2 class="text-xl text-black font-bold">Tentang Kami</h2>
+      <p class="font-bold">
+        satu-satunya e-commerce di mana batas antara kebutuhan warung kelontong
+        dan pasar gelap internasional tidak lagi relevan!
+      </p>
+      <p>
+        Sesuai dengan janji kami di halaman depan: "Anda bisa mendapatkan
+        segalanya di sini dengan harga yang wajar." Kami sangat serius dengan
+        kata segalanya. Kami percaya bahwa pelanggan kami tidak seharusnya repot
+        berpindah-pindah toko untuk memenuhi kebutuhan hidup mereka yang
+        kompleks dan dinamis.
+      </p>
+    </section>
+    <footer class="bg-gray-50 border-t py-8 mt-auto">
+      <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div id="Kontak" class="text-left">
+          <h3 class="font-bold text-lg text-gray-800 mb-2">Kontak Kami</h3>
+          <p class="text-gray-600">Email: mytoko19@gmail.com</p>
+          <p class="text-gray-600">Nomor: 0877-9819-5572</p>
+        </div>
+        <div
+          class="md:text-right text-gray-500 flex flex-col text-center mt-4 md:mt-0"
+        >
+          <p class="text-sm">MyToko</p>
+          <p class="text-sm">All Rights Reserved &copy; 2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col" style="z-index: 200">
+      <div class="flex items-center justify-between p-4 border-b">
+        <h3 class="text-lg font-bold text-gray-800">🛒 Keranjang Belanja</h3>
+        <button id="tutupCart" class="text-gray-400 hover:text-red-500 text-2xl font-bold leading-none" aria-label="Tutup keranjang">&times;</button>
+      </div>
+      <div id="daftarCart" class="grow overflow-y-auto p-4 space-y-3">
+        <p class="text-gray-400 text-center py-8" id="cartKosong">Keranjang masih kosong</p>
+      </div>
+      <div id="cartFooter" class="border-t p-4 hidden">
+        <div class="flex justify-between text-lg font-bold text-gray-800 mb-3">
+          <span>Total:</span>
+          <span id="totalCart" class="text-green-600">Rp 0</span>
+        </div>
+        <button id="checkoutButton" class="w-full bg-green-600 text-white font-bold py-2.5 rounded-xl hover:bg-green-700 transition">
+          Checkout
+        </button>
+      </div>
+    </div>
+    <!-- Overlay untuk cart -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black/40 hidden transition-opacity duration-300" style="z-index: 150"></div>
+
+    <script>
+      // ========== PENCARIAN PRODUK ==========
+      const kolomPencarian = document.getElementById('kolomPencarian');
+      const semuaProduk = document.querySelectorAll('article');
+      const pesanKosong = document.getElementById('pesanKosong');
+
+      semuaProduk.forEach(function(produk) {
+        const stok = Number(produk.dataset.stock || 0);
+        const labelStok = document.createElement('p');
+        labelStok.className = stok > 0 ? 'text-sm text-gray-500 mt-2' : 'text-sm text-red-600 font-semibold mt-2';
+        labelStok.textContent = stok > 0 ? `Stok: ${stok}` : 'Stok habis';
+        produk.querySelector('.p-4').insertBefore(labelStok, produk.querySelector('p.text-gray-600'));
+
+        const tombolBeli = produk.querySelector('.btnBeli');
+        tombolBeli.disabled = stok === 0;
+        if (stok === 0) {
+          tombolBeli.textContent = 'Habis';
+          tombolBeli.classList.remove('bg-green-600', 'hover:bg-green-700');
+          tombolBeli.classList.add('bg-gray-400', 'cursor-not-allowed');
+        }
+      });
+
+      kolomPencarian.addEventListener('keyup', function(event) {
+        const kataKunci = event.target.value.toLowerCase();
+        let barangDitemukan = false;
+
+        semuaProduk.forEach(function(produk) {
+          const judulProduk = produk.querySelector('h3').innerText.toLowerCase();
+          if (judulProduk.includes(kataKunci)) {
+            produk.style.display = 'flex';
+            barangDitemukan = true;
+          } else {
+            produk.style.display = 'none';
+          }
+        });
+
+        if (barangDitemukan) {
+          pesanKosong.classList.add('hidden');
+        } else {
+          pesanKosong.classList.remove('hidden');
+        }
+      });
+
+      // ========== AKUN PELANGGAN ==========
+      const btnBukaLogin = document.getElementById('tombolBukaLogin');
+      const btnLogout = document.getElementById('tombolLogout');
+      const profilAkun = document.getElementById('profilAkun');
+      const namaProfil = document.getElementById('namaProfil');
+      const emailProfil = document.getElementById('emailProfil');
+      const sesiKey = 'loginUser';
+      const akunAktif = JSON.parse(localStorage.getItem(sesiKey) || 'null');
+
+      if (!akunAktif || akunAktif.role !== 'pelanggan') {
+        window.location.href = 'login.html';
+      }
+
+      btnBukaLogin.classList.add('hidden');
+      btnLogout.classList.remove('hidden');
+      profilAkun.classList.remove('hidden');
+      profilAkun.classList.add('flex');
+      namaProfil.textContent = akunAktif.name;
+      emailProfil.textContent = akunAktif.email;
+
+      btnLogout.addEventListener('click', function() {
+        localStorage.removeItem(sesiKey);
+        window.location.href = 'login.html';
+      });
+
+      // ========== KERANJANG BELANJA ==========
+      const cart = [];
+      const badgeCart = document.getElementById('badgeCart');
+      const btnBukaCart = document.getElementById('tombolBukaCart');
+      const cartSidebar = document.getElementById('cartSidebar');
+      const tutupCart = document.getElementById('tutupCart');
+      const cartOverlay = document.getElementById('cartOverlay');
+      const daftarCart = document.getElementById('daftarCart');
+      const cartKosong = document.getElementById('cartKosong');
+      const cartFooter = document.getElementById('cartFooter');
+      const totalCart = document.getElementById('totalCart');
+
+      const promoDiskon = {
+        Mobil: 0.5,
+        Minuman: 0.3,
+        'Minuman Kaleng': 0.3,
+        Makanan: 0.2,
+        'Tactical Gear': 0.4,
+      };
+
+      function formatRupiah(angka) {
+        return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      }
+
+      function getPromoDiscount(category = '') {
+        return promoDiskon[category] || 0;
+      }
+
+      function getProdukInfo(article) {
+        const nama = article.querySelector('h3').innerText.trim();
+        const kategori = article.querySelector('span')?.innerText.trim() || '';
+        const priceEl = article.querySelector('.text-green-600.font-bold.text-lg');
+        const originalFromData = priceEl?.dataset.originalPrice;
+        const hargaAsli = Number(originalFromData || priceEl?.innerText.replace(/[^0-9]/g, '') || 0);
+        const diskon = getPromoDiscount(kategori);
+        const hargaAkhir = diskon > 0 ? Math.round(hargaAsli * (1 - diskon)) : hargaAsli;
+        const stok = Number(article.dataset.stock || 0);
+
+        return {
+          nama,
+          kategori,
+          hargaAsli,
+          hargaAkhir,
+          diskon,
+          stok
+        };
+      }
+
+      function openCart() {
+        cartSidebar.classList.remove('translate-x-full');
+        cartSidebar.classList.add('translate-x-0');
+        cartOverlay.classList.remove('hidden');
+      }
+
+      function closeCart() {
+        cartSidebar.classList.add('translate-x-full');
+        cartSidebar.classList.remove('translate-x-0');
+        cartOverlay.classList.add('hidden');
+      }
+
+      function updateCart() {
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        if (totalItems > 0) {
+          badgeCart.textContent = totalItems;
+          badgeCart.classList.remove('hidden');
+        } else {
+          badgeCart.classList.add('hidden');
+        }
+
+        daftarCart.innerHTML = '';
+        if (cart.length === 0) {
+          cartKosong.classList.remove('hidden');
+          cartFooter.classList.add('hidden');
+          totalCart.textContent = 'Rp 0';
+          return;
+        }
+
+        cartKosong.classList.add('hidden');
+        cartFooter.classList.remove('hidden');
+
+        let totalHarga = 0;
+        cart.forEach((item, index) => {
+          totalHarga += item.harga * item.qty;
+          const itemEl = document.createElement('div');
+          itemEl.className = 'flex items-center gap-3 bg-gray-50 p-3 rounded-lg';
+          itemEl.innerHTML = `
+            <div class="grow">
+              <p class="font-semibold text-gray-800 text-sm">${item.nama}</p>
+              ${item.hargaAsli && item.hargaAsli !== item.harga ? `<p class="text-gray-400 text-xs line-through">${formatRupiah(item.hargaAsli)}</p>` : ''}
+              <p class="text-green-600 font-bold text-sm">${formatRupiah(item.harga)}</p>
+              <p class="text-gray-500 text-xs">Stok tersedia: ${item.stok}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="btnKurangCart w-7 h-7 bg-gray-200 rounded-full hover:bg-gray-300 font-bold text-sm" data-index="${index}">−</button>
+              <span class="font-bold text-sm w-5 text-center">${item.qty}</span>
+              <button class="btnTambahCart w-7 h-7 bg-gray-200 rounded-full hover:bg-gray-300 font-bold text-sm" data-index="${index}" ${item.qty >= item.stok ? 'disabled' : ''}>+</button>
+            </div>
+            <button class="btnHapusCart text-red-400 hover:text-red-600 text-lg font-bold" data-index="${index}">&times;</button>
+          `;
+          daftarCart.appendChild(itemEl);
+        });
+
+        totalCart.textContent = formatRupiah(totalHarga);
+
+        document.querySelectorAll('.btnKurangCart').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const idx = Number(this.dataset.index);
+            if (cart[idx].qty > 1) {
+              cart[idx].qty--;
+            } else {
+              cart.splice(idx, 1);
+            }
+            updateCart();
+          });
+        });
+
+        document.querySelectorAll('.btnTambahCart').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const idx = Number(this.dataset.index);
+            if (cart[idx].qty < cart[idx].stok) {
+              cart[idx].qty++;
+              updateCart();
+            }
+          });
+        });
+
+        document.querySelectorAll('.btnHapusCart').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const idx = Number(this.dataset.index);
+            cart.splice(idx, 1);
+            updateCart();
+          });
+        });
+      }
+
+      document.querySelectorAll('.btnBeli').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const article = this.closest('article');
+          const produk = getProdukInfo(article);
+
+          const existing = cart.find(item => item.nama === produk.nama);
+          if (produk.stok === 0) {
+            alert(`${produk.nama} sedang habis.`);
+            return;
+          }
+          if (existing) {
+            if (existing.qty >= produk.stok) {
+              alert(`Stok ${produk.nama} hanya tersedia ${produk.stok}.`);
+              return;
+            }
+            existing.qty += 1;
+          } else {
+            cart.push({
+              nama: produk.nama,
+              harga: produk.hargaAkhir,
+              hargaAsli: produk.hargaAsli,
+              qty: 1,
+              diskon: produk.diskon,
+              stok: produk.stok
+            });
+          }
+
+          updateCart();
+          openCart();
+          alert(`${produk.nama} ditambahkan ke keranjang!`);
+        });
+      });
+
+      btnBukaCart.addEventListener('click', function() {
+        if (cartSidebar.classList.contains('translate-x-full')) {
+          openCart();
+        } else {
+          closeCart();
+        }
+      });
+
+      document.getElementById('checkoutButton').addEventListener('click', function() {
+        if (!akunAktif) {
+          alert('Silakan login terlebih dahulu untuk checkout.');
+          window.location.href = 'login.html';
+          return;
+        }
+        alert('Produk berhasil di-checkout!');
+        window.location.reload();
+      });
+
+      tutupCart.addEventListener('click', closeCart);
+      cartOverlay.addEventListener('click', closeCart);
+      updateCart();
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyToko - Toko Online Sederhana</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+  
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="text-2xl font-bold text-green-600">MyToko</a>
+      <nav>
+        <ul class="flex items-center gap-6 font-medium text-gray-700">
+          <li><a href="#" class="hover:text-green-600 transition">Home</a></li>
+          <li><a href="#produk" class="hover:text-green-600 transition">Produk</a></li>
+          <li><a href="#Kontak" class="hover:text-green-600 transition">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="grow">
+    <section class="bg-green-600 text-white py-16 px-4 text-center">
+      <h1 class="text-3xl font-bold">MyToko</h1>
+      <p class="text-green-100 text-base md:text-lg max-w-2xl mx-auto text-center leading-relaxed mt-2 mb-6">
+        Anda bisa mendapatkan segalanya di sini dengan harga yang wajar. Kami menyediakan produk dan layanan berkualitas tinggi bagi pelanggan kami. Jelajahi beragam produk kami dan temukan apa yang Anda butuhkan.
+      </p>
+      <a href="#produk" class="inline-block bg-white text-green-600 font-semibold px-6 py-2.5 rounded-lg shadow hover:bg-green-50 transition">
+        Lihat Produk
+      </a>
+    </section>
+
+    <section id="produk" class="container mx-auto py-12 px-4">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Produk Kami</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+          <img src="https://www.jdmexport.com/wp-content/uploads/sites/9/2022/12/08095258/toyota-ae86.jpg" alt="" class="w-full h-48 object-cover" />
+          <div class="p-4 flex flex-col grow">
+            <span class="text-xs text-red-600 font-semibold uppercase">Mobil</span>
+            <h3 class="font-bold text-gray-800 text-lg mt-1">Toyota AE86 Sprinter Trueno</h3>
+            <p class="text-gray-600 text-sm my-2 grow">Mobil yang sangat ikonik di dunia JDM, mobil sport kompak ringan ber- lampu pop-up, mesin depan, dan penggerak roda belakang yang diproduksi tahun 1983 sampai 1987. Mobil legendaris ini terkenal lewat budaya drifting dan serial anime [Initial D].</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-green-600 font-bold text-lg">Rp 1.890.244.000</span>
+              <button class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">Beli</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+          <img src="https://www.idh.id/thumbs/nb2hi4dthixs63lbnzqwozlsfzuwi2bonfsc65lqnrxwczdtf5sgs43uojuwe5lun5zc6nbsgeztgmbygu4c64dsn5shky3uf4ytgmzsgyztinjqgextknlrnbnhi5dtnj4gg6dqkbxeiltkobtq-/nb2hi4dthixs63lbnzqwozlsfzuwi2bonfsc65lqnrxwczdtf5sgs43uojuwe5lun5zc6nbsgeztgmbygu4c64dsn5shky3uf4ytgmzsgyztinjqgextknlrnbnhi5dtnj4gg6dqkbxeiltkobtt65z5gyydajtihu3dama-.jpg" alt="Ultra Milk Caramel 200ml" class="w-full h-48 object-cover" />
+          <div class="p-4 flex flex-col grow">
+            <span class="text-xs text-blue-600 font-semibold uppercase">Minuman</span>
+            <h3 class="font-bold text-gray-800 text-lg mt-1">Ultra Milk Caramel 200ml</h3>
+            <p class="text-gray-600 text-sm my-2 grow">Minuman susu UHT rasa caramel yang manis, cocok diminum kapanpun.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-green-600 font-bold text-lg">Rp 8.000</span>
+              <button class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">Beli</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJp3QsqeBrUSubG8JAyvxuB8Xx_nyNMx5tHPNZTmWx4w&s" alt="Nescafe Black Ice" class="w-full h-48 object-cover" />
+          <div class="p-4 flex flex-col grow">
+            <span class="text-xs text-blue-600 font-semibold uppercase">Minuman Kaleng</span>
+            <h3 class="font-bold text-gray-800 text-lg mt-1">Nescafe Black Ice</h3>
+            <p class="text-gray-600 text-sm my-2 grow">Kopi hitam yang dingin, cocok diminum kapan saja. Recovers your stamina</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-green-600 font-bold text-lg">Rp 7.000</span>
+              <button class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">Beli</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+          <img src="https://buckets.sasa.co.id/v1/AUTH_Assets/Assets/p/website/medias/page_medias/nasi_kebuli.jpg" alt="Nasi Kebuli Ayam" class="w-full h-48 object-cover" />
+          <div class="p-4 flex flex-col grow">
+            <span class="text-xs text-indigo-600 font-semibold uppercase">Makanan</span>
+            <h3 class="font-bold text-gray-800 text-lg mt-1">Nasi Kebuli Ayam</h3>
+            <p class="text-gray-600 text-sm my-2 grow\">Nasi kebuli dengan daging ayam yang lezat dan gurih. duh enak banget.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-green-600 font-bold text-lg">Rp 35.000</span>
+              <button class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">Beli</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+          <img src="https://awsimages.detik.net.id/community/media/visual/2022/08/27/antimateri_169.jpeg?w=1200" alt="Antimateri" class="w-full h-48 object-cover" />
+          <div class="p-4 flex flex-col grow\">
+            <span class="text-xs text-red-600 font-semibold uppercase">Micellaneous Items</span>
+            <h3 class="font-bold text-gray-800 text-lg mt-1">Antimateri</h3>
+            <p class="text-gray-600 text-sm my-2 grow\">Contaminated in Magnetic Containment Unit, barang ini merupakan barang terlangka dan tersusah untuk di ciptakan, dan karena kelangkaan tersebut harga barang ini sangat fantastis</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-green-600 font-bold text-lg">Rp 105.791.000</span>
+              <button class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">Beli</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw-iFcLqC1HBop60KE1IgakRxEdvFDP5KnTLizlFDtBw&s=10" alt="Heart Of Africa" class="w-full h-48 object-cover" />
+          <div class="p-4 flex flex-col grow\">
+            <span class="text-xs text-red-600 font-semibold uppercase">Miscellaneous Items</span>
+            <h3 class="font-bold text-gray-800 text-lg mt-1">Heart of Africa</h3>
+            <p class="text-gray-600 text-sm my-2 grow\">Berlian langka berukuran sangat besar dengan nilai estetika dan harga pasar fantastis.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-green-600 font-bold text-lg">Rp 596.244.000</span>
+              <button class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">Beli</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtJoTzC5Rmego5eyGxjD5-Jc5sIfbF8lUEuEOPxnLW_A&s=10" alt="Gold Lion Statue" class="w-full h-48 object-cover" />
+          <div class="p-4 flex flex-col grow\">
+            <span class="text-xs text-red-600 font-semibold uppercase">Miscellaneous Items</span>
+            <h3 class="font-bold text-gray-800 text-lg mt-1">Gold Lion Statue</h3>
+            <p class="text-gray-600 text-sm my-2 grow\">Patung emas yang indah dan bernilai tinggi.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-green-600 font-bold text-lg">Rp 596.244.000</span>
+              <button class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">Beli</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+          <img src="https://image.made-in-china.com/365f3j00yZSkOrPCkQoh/Setelan-Perlindungan-Penuh-Tim-Penjinak-Bom-Eod.webp" alt="HVK-2 Vest" class="w-full h-48 object-cover" />
+          <div class="p-4 flex flex-col grow\">
+            <span class="text-xs text-indigo-600 font-semibold uppercase">Tactical Gear</span>
+            <h3 class="font-bold text-gray-800 text-lg mt-1">EOD Gear Set</h3>
+            <p class="text-gray-600 text-sm my-2 grow\">perlindungan maksimal untuk peluru berkaliber besar, ledakan, dan benturan.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-green-600 font-bold text-lg">Rp 238.000.000</span>
+              <button class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">Beli</button>
+            </div>
+          </div>
+        </article>
+
+      </div> 
+    </section>
+  </main>
+  <section class=" bg-gray-200 justify-end py-7 px-4">
+    <h2 class="text-xl text-black font-bold ">Tentang Kami</h2>
+    <p class="font-bold">satu-satunya e-commerce di mana batas antara kebutuhan warung kelontong dan pasar gelap internasional tidak lagi relevan! </p>
+    <p>Sesuai dengan janji kami di halaman depan: "Anda bisa mendapatkan segalanya di sini dengan harga yang wajar." Kami sangat serius dengan kata segalanya. Kami percaya bahwa pelanggan kami tidak seharusnya repot berpindah-pindah toko untuk memenuhi kebutuhan hidup mereka yang kompleks dan dinamis.</p>
+  </section>
+
+  <footer class="bg-gray-50 border-t py-8 mt-auto">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div id="Kontak" class="text-left ">
+        <h3 class="font-bold text-lg text-gray-800 mb-2">Kontak Kami</h3>
+        <p class="text-gray-600">Email: mytoko19@gmail.com</p>
+        <p class="text-gray-600">Nomor: 0877-9819-5572</p>
+      </div>
+      <div class="md:text-right text-gray-500 flex flex-col text-center mt-4 md:mt-0">
+        <p class="text-sm">MyToko</p>
+        <p class="text-sm">All Rights Reserved &copy; 2024</p>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

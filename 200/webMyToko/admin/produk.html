@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk - MyToko Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-64 h-screen shrink-0 bg-green-900 text-gray-300 flex flex-col justify-between overflow-hidden">
+            <div class="flex flex-1 min-h-0 flex-col">
+                <div class="shrink-0 p-5 border-b border-green-800">
+                    <h1 class="text-green-500 text-2xl font-bold">MyToko</h1>
+                    <p class="text-xs text-gray-400">Admin Dashboard</p>
+                </div>
+
+                <div class="flex-1 min-h-0 overflow-y-auto p-4">
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Menu</p>
+                    <nav class="space-y-1">
+                        <a href="indexadmin.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-800 transition"><span>📊</span> Dashboard</a>
+                        <a href="produk.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-green-600 text-white font-medium"><span>📦</span> Produk</a>
+                        <a href="pesanan.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-800 transition"><span>📋</span> Pesanan</a>
+                        <a href="pelanggan.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-800 transition"><span>👥</span> Pelanggan</a>
+                        <a href="laporan.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-800 transition"><span>📈</span> Laporan</a>
+                        <a href="pengaturan.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-800 transition"><span>⚙️</span> Pengaturan</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="p-4 border-t border-gray-800">
+                <a href="#" id="logoutBtn" class="flex items-center gap-3 px-4 py-2 text-red-400 hover:bg-gray-800 rounded-lg transition font-medium"><span>🚪</span> Logout</a>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-y-auto">
+            <header class="bg-white shadow-sm px-6 py-4 flex justify-between items-center sticky top-0 z-40">
+                <div>
+                    <h2 class="text-lg font-bold text-gray-800">Produk</h2>
+                    <p class="text-xs text-gray-500">Kelola produk toko</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative cursor-pointer" title="Notifikasi"><span class="text-xl">🔔</span><span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span></div>
+                    <div class="flex items-center gap-3 border-l pl-4 border-gray-200">
+                        <div class="text-right hidden sm:block"><p class="text-sm font-bold text-gray-800">Admin</p><p class="text-xs text-gray-500">Administrator</p></div>
+                        <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold shadow">A</div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="p-6 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between gap-4 sm:items-center">
+                    <div><h1 class="text-2xl font-bold text-gray-800">Data Produk</h1><p class="text-sm text-gray-500">Daftar produk yang tersedia di toko</p></div>
+                </div>
+
+                <section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between gap-3 sm:items-center">
+                        <h3 class="text-lg font-bold text-gray-800">Produk Terbaru</h3>
+                        <div class="flex gap-2 w-full sm:w-auto">
+                            <input id="searchProductInput" type="search" placeholder="Cari produk..." class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-600 w-full sm:w-64">
+                            <button id="searchProductBtn" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition">Cari</button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-180 text-left border-collapse text-sm">
+                            <thead><tr class="border-b text-gray-500 bg-gray-50"><th class="p-3">No</th><th class="p-3">Produk</th><th class="p-3">Harga</th><th class="p-3">Stok</th><th class="p-3">Kategori</th><th class="p-3">Status</th><th class="p-3">Aksi</th></tr></thead>
+                            <tbody id="productTableBody" class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50"><td class="p-3">1</td><td class="p-3 font-medium text-gray-800">Toyota AE86 Sprinter Trueno</td><td class="p-3">Rp 798.122.000</td><td class="p-3">3</td><td class="p-3">Mobil</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold">Aktif</span></td><td class="p-3"><div class="flex gap-2"><button class="detail-product text-green-600 hover:underline text-xs bg-green-50 px-3 py-1 rounded font-medium">Detail</button><button class="edit-product text-blue-600 hover:underline text-xs bg-blue-50 px-3 py-1 rounded font-medium">Edit</button></div></td></tr>
+                                <tr class="hover:bg-gray-50"><td class="p-3">2</td><td class="p-3 font-medium text-gray-800">Ultra Milk Caramel 200ml</td><td class="p-3">Rp 5.600</td><td class="p-3">25</td><td class="p-3">Minuman</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold">Aktif</span></td><td class="p-3"><div class="flex gap-2"><button class="detail-product text-green-600 hover:underline text-xs bg-green-50 px-3 py-1 rounded font-medium">Detail</button><button class="edit-product text-blue-600 hover:underline text-xs bg-blue-50 px-3 py-1 rounded font-medium">Edit</button></div></td></tr>
+                                <tr class="hover:bg-gray-50"><td class="p-3">3</td><td class="p-3 font-medium text-gray-800">Nescafe Black Ice</td><td class="p-3">Rp 4.900</td><td class="p-3">0</td><td class="p-3">Minuman Kaleng</td><td class="p-3"><span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-semibold">Habis</span></td><td class="p-3"><div class="flex gap-2"><button class="detail-product text-green-600 hover:underline text-xs bg-green-50 px-3 py-1 rounded font-medium">Detail</button><button class="edit-product text-blue-600 hover:underline text-xs bg-blue-50 px-3 py-1 rounded font-medium">Edit</button></div></td></tr>
+                                <tr class="hover:bg-gray-50"><td class="p-3">4</td><td class="p-3 font-medium text-gray-800">Nasi Kebuli Ayam</td><td class="p-3">Rp 28.000</td><td class="p-3">12</td><td class="p-3">Makanan</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold">Aktif</span></td><td class="p-3"><div class="flex gap-2"><button class="detail-product text-green-600 hover:underline text-xs bg-green-50 px-3 py-1 rounded font-medium">Detail</button><button class="edit-product text-blue-600 hover:underline text-xs bg-blue-50 px-3 py-1 rounded font-medium">Edit</button></div></td></tr>
+                                <tr class="hover:bg-gray-50"><td class="p-3">5</td><td class="p-3 font-medium text-gray-800">Antimateri</td><td class="p-3">Rp 105.791.000</td><td class="p-3">1</td><td class="p-3">Micellaneous Items</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold">Aktif</span></td><td class="p-3"><div class="flex gap-2"><button class="detail-product text-green-600 hover:underline text-xs bg-green-50 px-3 py-1 rounded font-medium">Detail</button><button class="edit-product text-blue-600 hover:underline text-xs bg-blue-50 px-3 py-1 rounded font-medium">Edit</button></div></td></tr>
+                                <tr class="hover:bg-gray-50"><td class="p-3">6</td><td class="p-3 font-medium text-gray-800">Heart of Africa</td><td class="p-3">Rp 596.244.000</td><td class="p-3">1</td><td class="p-3">Miscellaneous Items</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold">Aktif</span></td><td class="p-3"><div class="flex gap-2"><button class="detail-product text-green-600 hover:underline text-xs bg-green-50 px-3 py-1 rounded font-medium">Detail</button><button class="edit-product text-blue-600 hover:underline text-xs bg-blue-50 px-3 py-1 rounded font-medium">Edit</button></div></td></tr>
+                                <tr class="hover:bg-gray-50"><td class="p-3">7</td><td class="p-3 font-medium text-gray-800">Gold Lion Statue</td><td class="p-3">Rp 596.244.000</td><td class="p-3">1</td><td class="p-3">Miscellaneous Items</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold">Aktif</span></td><td class="p-3"><div class="flex gap-2"><button class="detail-product text-green-600 hover:underline text-xs bg-green-50 px-3 py-1 rounded font-medium">Detail</button><button class="edit-product text-blue-600 hover:underline text-xs bg-blue-50 px-3 py-1 rounded font-medium">Edit</button></div></td></tr>
+                                <tr class="hover:bg-gray-50"><td class="p-3">8</td><td class="p-3 font-medium text-gray-800">EOD Gear Set</td><td class="p-3">Rp 142.800.000</td><td class="p-3">1</td><td class="p-3">Tactical Gear</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold">Aktif</span></td><td class="p-3"><div class="flex gap-2"><button class="detail-product text-green-600 hover:underline text-xs bg-green-50 px-3 py-1 rounded font-medium">Detail</button><button class="edit-product text-blue-600 hover:underline text-xs bg-blue-50 px-3 py-1 rounded font-medium">Edit</button></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+            <footer class="text-center py-4 text-xs text-gray-500 border-t bg-white mt-auto">&copy; 2026 MyToko. Semua Hak Dilindungi.</footer>
+        </div>
+    </div>
+
+    <div id="productDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4" role="dialog" aria-modal="true" aria-labelledby="detailProductName">
+        <div class="w-full max-w-md rounded-xl bg-white shadow-xl">
+            <div class="flex items-center justify-between border-b px-6 py-4">
+                <h2 id="detailProductName" class="text-lg font-bold text-gray-800">Detail Produk</h2>
+                <button id="closeProductDetail" type="button" class="text-2xl leading-none text-gray-400 hover:text-gray-700" aria-label="Tutup">&times;</button>
+            </div>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 px-6 py-5 text-sm">
+                <dt class="font-semibold text-gray-500">Harga</dt><dd id="detailProductPrice" class="text-gray-800"></dd>
+                <dt class="font-semibold text-gray-500">Stok</dt><dd id="detailProductStock" class="text-gray-800"></dd>
+                <dt class="font-semibold text-gray-500">Kategori</dt><dd id="detailProductCategory" class="text-gray-800"></dd>
+                <dt class="font-semibold text-gray-500">Status</dt><dd id="detailProductStatus" class="text-gray-800"></dd>
+            </dl>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchProductInput');
+        const filterProducts = () => {
+            const keyword = searchInput.value.toLowerCase();
+            document.querySelectorAll('#productTableBody tr').forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(keyword) ? '' : 'none';
+            });
+        };
+        searchInput.addEventListener('input', filterProducts);
+        document.getElementById('searchProductBtn').addEventListener('click', filterProducts);
+        document.querySelectorAll('.edit-product').forEach(button => {
+            button.addEventListener('click', () => {
+                const row = button.closest('tr');
+                const productName = prompt('Nama produk:', row.cells[1].innerText);
+                if (productName === null) return;
+
+                const price = prompt('Harga produk:', row.cells[2].innerText.replace('Rp ', ''));
+                if (price === null) return;
+
+                const stock = prompt('Stok produk:', row.cells[3].innerText);
+                if (stock === null) return;
+
+                const category = prompt('Kategori produk:', row.cells[4].innerText);
+                if (category === null) return;
+
+                const stockNumber = Number(stock);
+                if (!productName.trim() || !price.trim() || !category.trim() || !Number.isInteger(stockNumber) || stockNumber < 0) {
+                    alert('Data produk tidak valid. Pastikan semua kolom terisi dan stok berupa angka 0 atau lebih.');
+                    return;
+                }
+
+                row.cells[1].innerText = productName.trim();
+                row.cells[2].innerText = `Rp ${price.trim()}`;
+                row.cells[3].innerText = stockNumber;
+                row.cells[4].innerText = category.trim();
+
+                const status = row.cells[5].querySelector('span');
+                status.innerText = stockNumber === 0 ? 'Habis' : 'Aktif';
+                status.className = stockNumber === 0
+                    ? 'bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-semibold'
+                    : 'bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold';
+            });
+        });
+
+        const productDetailModal = document.getElementById('productDetailModal');
+        const closeProductDetail = () => {
+            productDetailModal.classList.add('hidden');
+            productDetailModal.classList.remove('flex');
+        };
+        document.querySelectorAll('#productTableBody tr').forEach(row => {
+            row.querySelector('.detail-product').addEventListener('click', () => {
+                document.getElementById('detailProductName').innerText = row.cells[1].innerText;
+                document.getElementById('detailProductPrice').innerText = row.cells[2].innerText;
+                document.getElementById('detailProductStock').innerText = row.cells[3].innerText;
+                document.getElementById('detailProductCategory').innerText = row.cells[4].innerText;
+                document.getElementById('detailProductStatus').innerText = row.cells[5].innerText;
+                productDetailModal.classList.remove('hidden');
+                productDetailModal.classList.add('flex');
+            });
+        });
+        document.getElementById('closeProductDetail').addEventListener('click', closeProductDetail);
+        productDetailModal.addEventListener('click', event => {
+            if (event.target === productDetailModal) closeProductDetail();
+        });
+
+        if (!localStorage.getItem('loginUser')) window.location.href = 'login.html';
+        document.getElementById('logoutBtn').addEventListener('click', event => {
+            event.preventDefault();
+            localStorage.removeItem('loginUser');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
